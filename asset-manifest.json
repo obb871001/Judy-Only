@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Judy-Only/static/css/main.2de95c78.css",
-    "main.js": "/Judy-Only/static/js/main.e43362e2.js",
+    "main.css": "/Judy-Only/static/css/main.46ba2453.css",
+    "main.js": "/Judy-Only/static/js/main.4c84742c.js",
     "service-worker.js": "/Judy-Only/service-worker.js",
     "static/media/day-snowing.svg": "/Judy-Only/static/media/day-snowing.ba1cbc7669611ee425e874e171d02e70.svg",
     "static/media/night-snowing.svg": "/Judy-Only/static/media/night-snowing.f00de84c0d9bed3a871ecc6fdd79f1ca.svg",
@@ -24,11 +24,11 @@
     "static/media/loading.svg": "/Judy-Only/static/media/loading.f8d56fd58925a1aaab4f80f1d8865c03.svg",
     "index.html": "/Judy-Only/index.html",
     "static/media/night-clear.svg": "/Judy-Only/static/media/night-clear.94eb7d671bc6d4dec6aa0b47038954df.svg",
-    "main.2de95c78.css.map": "/Judy-Only/static/css/main.2de95c78.css.map",
-    "main.e43362e2.js.map": "/Judy-Only/static/js/main.e43362e2.js.map"
+    "main.46ba2453.css.map": "/Judy-Only/static/css/main.46ba2453.css.map",
+    "main.4c84742c.js.map": "/Judy-Only/static/js/main.4c84742c.js.map"
   },
   "entrypoints": [
-    "static/css/main.2de95c78.css",
-    "static/js/main.e43362e2.js"
+    "static/css/main.46ba2453.css",
+    "static/js/main.4c84742c.js"
   ]
 }
