@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Judy-Only/static/css/main.521489e7.css",
-    "main.js": "/Judy-Only/static/js/main.455c06ab.js",
+    "main.js": "/Judy-Only/static/js/main.a7b0df53.js",
     "static/media/IMG_8054.JPG": "/Judy-Only/static/media/IMG_8054.b3b7248f11ff2597d197.JPG",
     "static/media/ouricon.jpg": "/Judy-Only/static/media/ouricon.b56580aa1583f23ff5c2.jpg",
     "service-worker.js": "/Judy-Only/service-worker.js",
@@ -28,10 +28,10 @@
     "index.html": "/Judy-Only/index.html",
     "static/media/night-clear.svg": "/Judy-Only/static/media/night-clear.94eb7d671bc6d4dec6aa0b47038954df.svg",
     "main.521489e7.css.map": "/Judy-Only/static/css/main.521489e7.css.map",
-    "main.455c06ab.js.map": "/Judy-Only/static/js/main.455c06ab.js.map"
+    "main.a7b0df53.js.map": "/Judy-Only/static/js/main.a7b0df53.js.map"
   },
   "entrypoints": [
     "static/css/main.521489e7.css",
-    "static/js/main.455c06ab.js"
+    "static/js/main.a7b0df53.js"
   ]
 }
