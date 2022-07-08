@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/Judy-Only/static/css/main.9e69462e.css",
-    "main.js": "/Judy-Only/static/js/main.d3d2d001.js",
+    "main.css": "/Judy-Only/static/css/main.521489e7.css",
+    "main.js": "/Judy-Only/static/js/main.455c06ab.js",
     "static/media/IMG_8054.JPG": "/Judy-Only/static/media/IMG_8054.b3b7248f11ff2597d197.JPG",
+    "static/media/ouricon.jpg": "/Judy-Only/static/media/ouricon.b56580aa1583f23ff5c2.jpg",
     "service-worker.js": "/Judy-Only/service-worker.js",
+    "static/media/relationship.png": "/Judy-Only/static/media/relationship.145a3ca2804831d26796.png",
     "static/media/day-snowing.svg": "/Judy-Only/static/media/day-snowing.ba1cbc7669611ee425e874e171d02e70.svg",
     "static/media/night-snowing.svg": "/Judy-Only/static/media/night-snowing.f00de84c0d9bed3a871ecc6fdd79f1ca.svg",
     "static/media/day-thunderstorm.svg": "/Judy-Only/static/media/day-thunderstorm.c1e5aabc2d813feeb2e535cff2b025ee.svg",
@@ -25,11 +27,11 @@
     "static/media/loading.svg": "/Judy-Only/static/media/loading.f8d56fd58925a1aaab4f80f1d8865c03.svg",
     "index.html": "/Judy-Only/index.html",
     "static/media/night-clear.svg": "/Judy-Only/static/media/night-clear.94eb7d671bc6d4dec6aa0b47038954df.svg",
-    "main.9e69462e.css.map": "/Judy-Only/static/css/main.9e69462e.css.map",
-    "main.d3d2d001.js.map": "/Judy-Only/static/js/main.d3d2d001.js.map"
+    "main.521489e7.css.map": "/Judy-Only/static/css/main.521489e7.css.map",
+    "main.455c06ab.js.map": "/Judy-Only/static/js/main.455c06ab.js.map"
   },
   "entrypoints": [
-    "static/css/main.9e69462e.css",
-    "static/js/main.d3d2d001.js"
+    "static/css/main.521489e7.css",
+    "static/js/main.455c06ab.js"
   ]
 }
