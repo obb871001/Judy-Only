@@ -10,19 +10,20 @@ import {faTemperatureEmpty} from '@fortawesome/free-solid-svg-icons';
 import { findLocation,getMoment } from './utils/helpers'
 import WeatherCard from './views/WeatherCard';
 import WeatherSetting from './views/WeatherSetting';
+import Navbar from './views/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-
+import './index.css';
+import DayandValue from './views/DayandValue';
+import Photo from './views/Photo';
 
 
 const Container = styled.div`
-  background-color:${({theme})=>theme.backgroundColor};
-  height: 100%;
+  // background-color:${({theme})=>theme.backgroundColor};
   display: flex;
   align-items: center;
   justify-content: center;
 `;
-
 
 
 const theme = {
@@ -53,7 +54,7 @@ const LOCATION_NAME = '新竹市';
 function App() {
 
 
-  const [nowCity , setNowCity] = useState('新竹縣');
+  const [nowCity , setNowCity] = useState('新竹市');
   const nowLocation = useMemo(()=>findLocation(nowCity),[nowCity])
   const {cityName,locationName,sunriseCityName} = nowLocation
 
@@ -102,7 +103,7 @@ function App() {
   const fetchWeather = () => {
     return fetch(
       `
-      https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=${KEY}&format=JSON&locationName=%E6%96%B0%E7%AB%B9%E5%B8%82
+      https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B990444E-46C7-4278-BA8B-FDD900765179&locationName=%E6%96%B0%E7%AB%B9%E5%B8%82
 
       `
     )
@@ -117,6 +118,7 @@ function App() {
           return need
         }
       )
+      console.log(weatherElements)
         return{
           description:weatherElements.time[0].parameter.parameterName,
           rainPossibility:weatherElements.PoP.parameterName,
@@ -135,7 +137,7 @@ function App() {
   }
 
 
-  const [currentTheme,setcurrntTheme] = useState('dark');
+  const [currentTheme,setcurrntTheme] = useState('light');
 
   const moment = useMemo(() => getMoment(sunriseCityName),[sunriseCityName]);
   
@@ -186,8 +188,9 @@ const handleNowCityChange = (nowCity) =>{
 }
 
   return (
-    <ThemeProvider theme={theme[currentTheme]}>
-      <Container>
+    <ThemeProvider theme={theme.light}>
+      <Navbar />
+      <Container className="p-3">
         {nowPage ==='WeatherCard' && (
           <WeatherCard 
           cityName={cityName}
@@ -200,6 +203,8 @@ const handleNowCityChange = (nowCity) =>{
         {nowPage === 'WeatherSetting' && ( <WeatherSetting handleSettings={handleSettings} handleNowCityChange={handleNowCityChange} cityName={cityName}/>
         )}
       </Container>
+      <DayandValue />
+      <Photo />
     </ThemeProvider>
   );
 }

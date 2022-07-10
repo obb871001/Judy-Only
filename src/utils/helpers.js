@@ -127,7 +127,7 @@ export const availableLocations = [
     sunriseCityName: '臺中市',
   },
   {
-    cityName: '新竹縣',
+    cityName: '新竹市',
     locationName: '新竹',
     sunriseCityName: '新竹縣',
   },
