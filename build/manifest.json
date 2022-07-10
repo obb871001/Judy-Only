@@ -1,0 +1,16 @@
+{
+  "short_name": "Judy專用天氣app",
+  "name": "Judy專用天氣app",
+  "icons": [
+    {
+      "src": "iconbaby.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#1f2022",
+  "background_color": "#1f2022"
+}
