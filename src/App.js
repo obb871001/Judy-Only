@@ -16,6 +16,8 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
 import DayandValue from './views/DayandValue';
 import Photo from './views/Photo';
+import MainSection from './views/MainSection';
+import CuteCard from './views/CuteCard';
 
 
 const Container = styled.div`
@@ -167,7 +169,7 @@ function App() {
 };
 
 const [nowPage, setnowPage] = useState('WeatherCard');
-
+const [showCard, setshowCard] = useState(false);
   useEffect(()=>{
     setcurrntTheme(moment ==='day' ? 'light' : 'dark');
 
@@ -205,6 +207,8 @@ const handleNowCityChange = (nowCity) =>{
       </Container>
       <DayandValue />
       <Photo />
+      <MainSection setshowCard={setshowCard} />
+      {showCard ? <CuteCard setshowCard={setshowCard}/> : null}
     </ThemeProvider>
   );
 }

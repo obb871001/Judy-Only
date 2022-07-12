@@ -146,13 +146,13 @@ function changePhoto(){
     var thisPhotoNum = getRandomInt(photoLength);
     localStorage.setItem('changeIMG',array[thisPhotoNum])
     document.getElementById('changeImg').src =  array[thisPhotoNum];
-    if(thisPhotoNum == 27){
+    if(thisPhotoNum == 28){
         alert('這張太辣了，請跳過ˋˊ')
     }
 }
 const Photo = () =>{
     return(
-        <section className="px-3">
+        <section className="px-3 mb-2">
             <div className="d-flex justify-content-between" style={{height:"220px"}}>
                 <PhotoSelector className="col-7 h-100 p-3 position-relative shadow"  onClick={changePhoto}>
                     <img id="changeImg" src={localStorage.changeIMG} />
