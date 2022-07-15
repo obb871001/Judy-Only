@@ -1,4 +1,5 @@
 import React from "react";
+import { useState,useEffect } from "react";
 import styled from "@emotion/styled";
 
 import poop from "./../images/cardImages/poop.png";
@@ -32,16 +33,18 @@ const Card = styled.div`
     left:0;
     .card{
         border-radius:25px;
-        transition:all 2s;
         width:90%;
+        
     }
     .card-back{ 
-        &:hover {
-            transform: rotateY(180deg);
-        }
-        &:hover .card-front{
-            transform: rotateY(0deg);
-        }
+        transform: rotateY(0deg);
+        transition:all 2s;
+        // &:hover {
+        //     transform: rotateY(180deg);
+        // }
+        // &:hover .card-front{
+        //     transform: rotateY(0deg);
+        // }
         div{
             border-radius:15px;
             background-color: #A0CED9;
@@ -56,8 +59,9 @@ const Card = styled.div`
         
     }
     .card-front{ 
-        
         transform: rotateY(180deg);
+        transition:transform 2s;
+
         // &:hover {
         //     transform: rotateY(180deg);
         // }
@@ -110,9 +114,24 @@ const cardContent = [
         "img":[poopgreen],
     },
     {
-        "title":"一坨粉色大便",
+        "title":"一坨綠色大便",
         "star":"★",
-        "img":[pooppink],
+        "img":[poopgreen],
+    },
+    {
+        "title":"一坨綠色大便",
+        "star":"★",
+        "img":[poopgreen],
+    },
+    {
+        "title":"一坨綠色大便",
+        "star":"★",
+        "img":[poopgreen],
+    },
+    {
+        "title":"一坨綠色大便",
+        "star":"★",
+        "img":[poopgreen],
     },
     {
         "title":"一坨粉色大便",
@@ -148,6 +167,56 @@ const cardContent = [
         "title":"一坨粉色大便",
         "star":"★",
         "img":[pooppink],
+    },
+    {
+        "title":"一坨粉色大便",
+        "star":"★",
+        "img":[pooppink],
+    },
+    {
+        "title":"一坨粉色大便",
+        "star":"★",
+        "img":[pooppink],
+    },
+    {
+        "title":"一坨粉色大便",
+        "star":"★",
+        "img":[pooppink],
+    },
+    {
+        "title":"一坨粉色大便",
+        "star":"★",
+        "img":[pooppink],
+    },
+    {
+        "title":"一坨粉色大便",
+        "star":"★",
+        "img":[pooppink],
+    },
+    {
+        "title":"一坨大便",
+        "star":"★",
+        "img":[poop],
+    },
+    {
+        "title":"一坨大便",
+        "star":"★",
+        "img":[poop],
+    },
+    {
+        "title":"一坨大便",
+        "star":"★",
+        "img":[poop],
+    },
+    {
+        "title":"一坨大便",
+        "star":"★",
+        "img":[poop],
+    },
+    {
+        "title":"一坨大便",
+        "star":"★",
+        "img":[poop],
     },
     {
         "title":"一坨大便",
@@ -657,11 +726,17 @@ const cardContent = [
 
 
 ];
-
 const cardNum = cardContent.length;
 function getRandomInt(e) {
     return Math.floor(Math.random() * e);
 }
+function CardHide(){
+        document.getElementById('card-back').style.setProperty('display','none','important');
+    } 
+    function CardShow(){
+        document.getElementById('card-front').style.setProperty('display','block','important');
+        document.getElementById('card-front').style.setProperty('opacity','1','important');
+    }
 function CardGifts(){
     const cardBack = document.getElementsByClassName('card-back');
     const cardFront = document.getElementsByClassName('card-front');
@@ -671,32 +746,66 @@ function CardGifts(){
     } 
     function CardShow(){
         document.getElementById('card-front').style.setProperty('display','block','important');
+        document.getElementById('card-front').style.setProperty('opacity','1','important');
     } 
+    document.getElementById('card-back').style.setProperty('transform','rotateY(180deg)','important');
     document.getElementById('card-front').style.setProperty('transform','rotateY(0deg)','important');
     setTimeout(CardHide,600);
     setTimeout(CardShow,600);
 
     var thisRandomGift = getRandomInt(cardNum);
-    localStorage.setItem('Gift-title',cardContent[thisRandomGift].title);
-    localStorage.setItem('Gift-star',cardContent[thisRandomGift].star);
-    localStorage.setItem('gift',thisRandomGift);
-
+    localStorage.setItem('CardGot',1)
+    localStorage.setItem('CardGotTime',nowDate.getDate())
+    // localStorage.setItem('Gift-title',cardContent[thisRandomGift].title);
+    // localStorage.setItem('Gift-star',cardContent[thisRandomGift].star);
+    // localStorage.setItem('gift',thisRandomGift);
+    
     
 }
+var nowDate = new Date();//現在時刻
+var nextDate = new Date();//用戶登錄時刻的下一個整點，也可以設置成某一個固定時刻
+nextDate.setDate(nextDate.getDate()+1);
+nextDate.setHours(0);//小時數增加1
+nextDate.setMinutes(0);
+nextDate.setSeconds(0);
 
+window.addEventListener("load",function(e){
+    var thisRandomGift = getRandomInt(cardNum);
+    const elementBack = document.getElementById("card-back");
+    localStorage.setItem('nextDay',nextDate.getDate())
+    if(this.localStorage.CardGot != 1){
+        console.log('13')
+        localStorage.setItem('Gift-title',cardContent[thisRandomGift].title);
+        localStorage.setItem('Gift-star',cardContent[thisRandomGift].star);
+        localStorage.setItem('gift',thisRandomGift);    
+    }
+    else if(nextDate.getDate() - localStorage.CardGotTime > 1){
+        console.log('14')
+        localStorage.setItem('Gift-title',cardContent[thisRandomGift].title);
+        localStorage.setItem('Gift-star',cardContent[thisRandomGift].star);
+        localStorage.setItem('gift',thisRandomGift);    
+    }
+    else{
+        console.log('15');
+        localStorage.getItem('Gift-title');
+        localStorage.getItem('Gift-star');
+        document.getElementById('card-back').style.setProperty('display','none','important');
+    }
 
-console.log(localStorage.getItem('gift'));
+},false)
 const CuteCard = ({setshowCard}) => {
+    const [gotCard,setgotCard] = useState(false);
+
     return (
         <Card className="d-flex justify-content-center align-items-center px-3">
             <section className="w-100 h-100 position-absolute" style={{background:"rgb(0,0,0,0.5)"}} onClick={()=>setshowCard(false)}></section>
-            <h3 className="text-white position-absolute text-center py-2 mb-0 w-100" style={{zIndex:"9999",top:"10%",background:"rgb(0,0,0,.5)"}}>抽抽每日卡片</h3>
-            <div id="card-back" className="col-12 bg-light position-absolute shadow-lg p-4 card-back card" onClick={CardGifts} style={{height:"500px",zIndex:"1000"}}>
+            <h3 className="text-white position-absolute text-center py-2 mb-0 w-100" style={{zIndex:"9999",top:"10%",background:"rgb(0,0,0,.5)"}}>{localStorage.CardGot == 1 && localStorage.nextDay - localStorage.CardGotTime  <= 1 ? "今天抽過了！！" : "抽抽今日卡片"}</h3>
+            <div  className="col-12 bg-light position-absolute shadow-lg p-4 card-back card" onClick={CardGifts} style={{height:"500px",zIndex:"1000",display:localStorage.CardGot == 1 && localStorage.nextDay - localStorage.CardGotTime  <= 1 ? "none" : "block"}} id="card-back">
                 <div className="border w-100 h-100">
 
                 </div>
             </div>
-            <div id="card-front" className="col-12 bg-light position-absolute shadow-lg p-4 card-front card" style={{height:"500px",zIndex:"999",display:"block"}}>
+            <div id="card-front" className="col-12 bg-light position-absolute shadow-lg p-4 card-front card" style={{height:"500px",zIndex:"999",display:localStorage.CardGot == 1 && localStorage.nextDay - localStorage.CardGotTime  <= 1 ? "block" : "",opacity:localStorage.CardGot == 1 && localStorage.nextDay - localStorage.CardGotTime  <= 1 ? "1":"0",transform:localStorage.CardGot == 1 && localStorage.nextDay - localStorage.CardGotTime  <= 1 ? "rotateY(0deg)":""}}>
                 <div className="card-front-bg"></div>
                 <div className="border w-100 h-100 p-3 d-flex flex-column align-items-center">
                     <h5>今日抽獎結果</h5>

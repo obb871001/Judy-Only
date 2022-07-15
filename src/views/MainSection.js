@@ -30,8 +30,8 @@ const Col = styled.div`
 
 const MainSection = ({setshowCard}) =>{
     return(
-        <section className="px-3 d-flex" style={{height:"88px"}}>
-            <Col className="col-3 h-100 p-2" onClick={()=>setshowCard(true)}>
+        <section className="px-3 d-flex mb-2" style={{height:"88px"}}>
+            <Col className="col-3 h-100 p-2" onClick={()=>setshowCard('card')}>
                 <div className="w-100 h-100 shadow" style={{background:"#BFBAB5"}}>
                     <FontAwesomeIcon icon={faGift} />
                 </div>

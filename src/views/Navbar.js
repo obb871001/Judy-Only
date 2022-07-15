@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
-
+import { useState } from "react";
+import Slidebar from "./Slidebar";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {faBars} from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +23,9 @@ const Nav = styled.div`
 `
 
 
-const Navbar = () =>{
+const Navbar = ({setshowCard}) =>{
+    const [showSlide,setshowSlide] = useState('false');
+    const [isOpen, setIsOpen] = useState(false)
     return(
         <Nav className="px-3 pt-3 d-flex align-items-center justify-content-between">
             <div className="d-flex">
@@ -34,8 +37,9 @@ const Navbar = () =>{
             </div>
             <div>
                 <FontAwesomeIcon icon={faBell} className="me-3"/>
-                <FontAwesomeIcon icon={faBars}/>
+                <FontAwesomeIcon icon={faBars} onClick={()=>setIsOpen(true)}/>
             </div>
+            <Slidebar setIsOpen={setIsOpen} isOpen={isOpen}  /> 
         </Nav>
     )
 }

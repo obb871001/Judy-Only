@@ -200,7 +200,6 @@ function ramdom(min,max){
 }
 
 setTimeout("localStorage.setItem('value',0)",dateIntegralPoint-date);//用戶登錄後的下一個整點執行
-setTimeout("localStorage.setItem('angryValue',randomAngry)",dateIntegralPoint-date);//用戶登錄後的下一個整點執行
 
 
 const WeatherCard = ({moment,currentWeather,fetchData,handleSettings,cityName}) =>{

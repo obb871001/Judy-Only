@@ -18,6 +18,8 @@ import DayandValue from './views/DayandValue';
 import Photo from './views/Photo';
 import MainSection from './views/MainSection';
 import CuteCard from './views/CuteCard';
+import Slidebar from './views/Slidebar';
+import Note from './views/Note';
 
 
 const Container = styled.div`
@@ -169,7 +171,7 @@ function App() {
 };
 
 const [nowPage, setnowPage] = useState('WeatherCard');
-const [showCard, setshowCard] = useState(false);
+const [showCard, setshowCard] = useState("");
   useEffect(()=>{
     setcurrntTheme(moment ==='day' ? 'light' : 'dark');
 
@@ -191,7 +193,7 @@ const handleNowCityChange = (nowCity) =>{
 
   return (
     <ThemeProvider theme={theme.light}>
-      <Navbar />
+      <Navbar setshowCard={setshowCard}/>
       <Container className="p-3">
         {nowPage ==='WeatherCard' && (
           <WeatherCard 
@@ -208,7 +210,8 @@ const handleNowCityChange = (nowCity) =>{
       <DayandValue />
       <Photo />
       <MainSection setshowCard={setshowCard} />
-      {showCard ? <CuteCard setshowCard={setshowCard}/> : null}
+      {showCard == "card" && <CuteCard setshowCard={setshowCard}/>}
+      <Note />
     </ThemeProvider>
   );
 }
