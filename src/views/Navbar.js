@@ -27,7 +27,7 @@ const Navbar = ({setshowCard}) =>{
     const [showSlide,setshowSlide] = useState('false');
     const [isOpen, setIsOpen] = useState(false)
     return(
-        <Nav className="px-3 pt-3 d-flex align-items-center justify-content-between">
+        <Nav className="px-3 pt-3 d-flex align-items-center justify-content-between position-fixed w-100 bg-white" style={{zIndex:"9999"}}>
             <div className="d-flex">
                 <img className="me-2" src={require('./../images/ouricon.jpg')} />
                 <div>

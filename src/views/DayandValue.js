@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import styled from "@emotion/styled";
 import Love from "./../images/smile.png"
 import AngryBird from "./../images/angry-birds.png"
@@ -140,32 +140,10 @@ function getTodayValue(){
         document.getElementById('LuckyButton').style.setProperty('display','none','important');
         
 }
-// window.onload = function(){
-//         localStorage.setItem('tomorrowTime',dateIntegralPoint.getDate());
-//         var clickT = localStorage.clickTime;
-//         var tomorrowT = localStorage.tomorrowTime;
-//         console.log(dateIntegralPoint)
-
-//         if(localStorage.TodayGot != 1){
-//           document.getElementById('LuckyButton').style.setProperty('display','flex','important');
-//         }
-//         else if(tomorrowT - clickT > 1){
-//             document.getElementById('LuckyButton').style.setProperty('display','flex','important');
-//         }
-//         else{
-//             localStorage.getItem('clickTime',date);
-//             document.getElementById('Lucky').innerHTML = localStorage.getItem('LuckyValue',luckyValue);
-//             document.getElementById('Angry').innerHTML = localStorage.getItem('AngryValue',angryValue);
-//             document.getElementById('Explode').innerHTML = localStorage.getItem('ExplodeValue',explodeValue);
-//             document.getElementById('LuckyButton').style.setProperty('display','none','important');
-//         }
-
-// }
 window.addEventListener("load",function(e){
   localStorage.setItem('tomorrowTime',dateIntegralPoint.getDate());
   var clickT = localStorage.clickTime;
   var tomorrowT = localStorage.tomorrowTime;
-  console.log(dateIntegralPoint)
 
   if(localStorage.TodayGot != 1){
     document.getElementById('LuckyButton').style.setProperty('display','flex','important');
@@ -181,9 +159,32 @@ window.addEventListener("load",function(e){
       document.getElementById('LuckyButton').style.setProperty('display','none','important');
   }
 },false)
+function test(){
+  localStorage.setItem('tomorrowTime',dateIntegralPoint.getDate());
+  var clickT = localStorage.clickTime;
+  var tomorrowT = localStorage.tomorrowTime;
 
+  if(localStorage.TodayGot != 1){
+    document.getElementById('LuckyButton').style.setProperty('display','flex','important');
+  }
+  else if(tomorrowT - clickT > 1){
+      document.getElementById('LuckyButton').style.setProperty('display','flex','important');
+  }
+  else{
+      localStorage.getItem('clickTime',date);
+      document.getElementById('Lucky').innerHTML = localStorage.getItem('LuckyValue',luckyValue);
+      document.getElementById('Angry').innerHTML = localStorage.getItem('AngryValue',angryValue);
+      document.getElementById('Explode').innerHTML = localStorage.getItem('ExplodeValue',explodeValue);
+      document.getElementById('LuckyButton').style.setProperty('display','none','important');
+  }
+
+}
 
 const Photo = () =>{
+
+  useEffect(()=>{
+    test( )
+  },[])
     return(
         <section className="px-3 mb-3">
             <div className="d-flex justify-content-between" style={{height:"120px"}}>

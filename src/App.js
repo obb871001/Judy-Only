@@ -1,27 +1,15 @@
-import logo from './logo.svg';
 import styled from '@emotion/styled';
 import { ThemeProvider } from '@emotion/react';
 import { useState , useEffect, useMemo } from 'react';
-import dayjs from 'dayjs';
 import 'normalize.css';
-import { ReactComponent as DayCloudy } from './images/day-cloudy.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faTemperatureEmpty} from '@fortawesome/free-solid-svg-icons';
-import { findLocation,getMoment } from './utils/helpers'
-import WeatherCard from './views/WeatherCard';
-import WeatherSetting from './views/WeatherSetting';
 import Navbar from './views/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import './index.css';
-import DayandValue from './views/DayandValue';
-import Photo from './views/Photo';
-import MainSection from './views/MainSection';
-import CuteCard from './views/CuteCard';
-import Slidebar from './views/Slidebar';
-import Note from './views/Note';
-
-
+import Home from './views/Home';
+import { BrowserRouter as Router, Route , Routes, Switch,Link } from 'react-router-dom';
+import YT from './Pages/YT/YT';
+import Chat from './Pages/Chat/Chat';
 const Container = styled.div`
   // background-color:${({theme})=>theme.backgroundColor};
   display: flex;
@@ -50,168 +38,19 @@ const theme = {
   },
 }
 
-const KEY = 'CWB-B990444E-46C7-4278-BA8B-FDD900765179';
-const LOCATION_NAME = '新竹市';
 
 
 
 function App() {
-
-
-  const [nowCity , setNowCity] = useState('新竹市');
-  const nowLocation = useMemo(()=>findLocation(nowCity),[nowCity])
-  const {cityName,locationName,sunriseCityName} = nowLocation
-
-  const fetchCurrentWeather = () =>{
-
-    // setcurrentWeather((prevState)=>({
-    //   ...prevState,isLoading:true
-    // }))
-
-
-    return fetch(
-      `
-      https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0003-001?Authorization=CWB-B990444E-46C7-4278-BA8B-FDD900765179&locationName=%E6%96%B0%E7%AB%B9
-      `
-    )
-      .then((response)=>response.json())
-      .then((data) => {
-        const locationData = data.records.location[0];
-        const weatherElements = locationData.weatherElement.reduce(
-          (need,item) =>{
-           if(['WDSD','TEMP','Weather'].includes(item.elementName)){
-            need[item.elementName] = item.elementValue;
-            }
-            return need;
-          },{}
-        );
-        console.log(weatherElements)
-          return{
-            observationTime:locationData.time.obsTime,
-            locationName:locationData.locationName,
-            temperature:weatherElements.TEMP,
-            windSpeed:weatherElements.WDSD,
-            isLoading:false,
-          }
-          
-          // description:locationData.,
-          // description:locationData.,
-          // description:locationData.,
-
-      })
-
-  }
-
-
-
-  const fetchWeather = () => {
-    return fetch(
-      `
-      https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-B990444E-46C7-4278-BA8B-FDD900765179&locationName=%E6%96%B0%E7%AB%B9%E5%B8%82
-
-      `
-    )
-    .then((response) => response.json())
-    .then((data) => {
-      const locationData = data.records.location[0];
-      const weatherElements = locationData.weatherElement.reduce(
-        (need,item) => {
-          if(['Wx','PoP','CI'].includes(item.elementName)){
-            need[item.elementName] = item.time[0].parameter;
-          }
-          return need
-        }
-      )
-      console.log(weatherElements)
-        return{
-          description:weatherElements.time[0].parameter.parameterName,
-          rainPossibility:weatherElements.PoP.parameterName,
-          comfortable:weatherElements.CI.parameterName,
-          weatherCode:weatherElements.time[0].parameter.parameterValue,
-          isLoading:false,
-        }
-    
-      // setcurrentWeather({
-      //   description:weatherElements.Wx.,
-      //   rainPossibility:weatherElements.PoP,
-    
-      // })
-    })
-
-  }
-
-
-  const [currentTheme,setcurrntTheme] = useState('light');
-
-  const moment = useMemo(() => getMoment(sunriseCityName),[sunriseCityName]);
-  
-
-  const [currentWeather,setcurrentWeather] = useState({
-    locationName: '',
-    description:'',
-    windSpeed:0,
-    temperature:0,
-    rainPossibility:0,
-    observationTime:new Date(),
-    isLoading:true,
-    comfortable:'',
-    weatherCode:0,
-  })
-
-
-  
-  const fetchData = async() =>{
-    const [currentWeather, weatherForecast] = await Promise.all([fetchWeather(),fetchCurrentWeather()]);
-    setcurrentWeather({
-      ...currentWeather,
-      ...weatherForecast,
-      isLoading:false,
-    });
-  
-};
-
-const [nowPage, setnowPage] = useState('WeatherCard');
-const [showCard, setshowCard] = useState("");
-  useEffect(()=>{
-    setcurrntTheme(moment ==='day' ? 'light' : 'dark');
-
-    setcurrentWeather((prev)=>({
-      ...prev,
-      isLoading:true,
-    }))  
-    
-    fetchData();
-  },[moment])
-
- 
-const handleSettings = (nowPage) =>{
-  setnowPage(nowPage)
-}
-const handleNowCityChange = (nowCity) =>{
-  setNowCity(nowCity)
-}
-
   return (
     <ThemeProvider theme={theme.light}>
-      <Navbar setshowCard={setshowCard}/>
-      <Container className="p-3">
-        {nowPage ==='WeatherCard' && (
-          <WeatherCard 
-          cityName={cityName}
-          currentWeather={currentWeather}
-          moment={moment}
-          fetchData={fetchData}
-          handleSettings={handleSettings}
-           />
-        )}
-        {nowPage === 'WeatherSetting' && ( <WeatherSetting handleSettings={handleSettings} handleNowCityChange={handleNowCityChange} cityName={cityName}/>
-        )}
-      </Container>
-      <DayandValue />
-      <Photo />
-      <MainSection setshowCard={setshowCard} />
-      {showCard == "card" && <CuteCard setshowCard={setshowCard}/>}
-      <Note />
+      <Router>
+      <Navbar/>
+        <Routes>
+          <Route path="/Judy-Only/" exact={true} element={<Home/>} />
+          <Route path="/Chat" exact={true} element={<Chat/>} />
+        </Routes>
+      </Router>
     </ThemeProvider>
   );
 }

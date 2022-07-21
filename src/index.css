@@ -53,3 +53,47 @@ html,body{
   animation : heartfade 6s linear;
   position : absolute;
 }
+.sent{
+  display:flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-bottom:20px;
+  margin-right:10px;
+}
+.sent img{
+  width:50px;
+  height:50px;
+  margin-left:10px;
+  border-radius: 50%;
+}
+.sent p{
+  margin-bottom:0;
+  padding:12px 10px;
+  background-color: rgb(148, 182, 255);
+  border-radius: 10px;
+  max-width: 70%;
+  color:rgb(61, 61, 61);
+  word-break: break-all;
+}
+.reveived{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom:20px;
+  margin-right:10px;
+}
+.reveived img{
+  width:50px;
+  height:50px;
+  margin-left:10px;
+  border-radius: 50%;
+}
+.reveived p{
+  margin-bottom:0;
+  padding:12px 10px;
+  background-color: rgb(213, 175, 254);
+  border-radius: 10px;
+  max-width: 60%;
+  color:rgb(255 255 255);
+  word-break: break-all;
+}

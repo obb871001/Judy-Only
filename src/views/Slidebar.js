@@ -7,6 +7,7 @@ import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { faDog } from "@fortawesome/free-solid-svg-icons";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const Item = styled.div`
     list-style:none;
@@ -31,23 +32,13 @@ const slidebar = [
     {
         "title":"主頁",
         "icon":faHouse,
+        "link":"/Judy-Only/"
     },
     {
         "title":"聊天室",
         "icon":faDog,
+        "link":"/Chat"
     },
-    {
-        "title":"待開發",
-        "icon":faHouse,
-    },
-    {
-        "title":"待開發",
-        "icon":faHouse,
-    },
-    {
-        "title":"設定",
-        "icon":faGear,
-    }
 ]
 
 const Slidebar = ({setIsOpen,isOpen}) =>{
@@ -57,11 +48,13 @@ const Slidebar = ({setIsOpen,isOpen}) =>{
         variants={variants}
         className="position-fixed top-0 end-0 h-100 d-flex flex-column py-4 px-3 bg-light shadow" style={{zIndex:"9999",width:"200px",background:"#fafafa !important"}}>
                 <FontAwesomeIcon icon={faXmark} className="align-self-end" onClick={()=>setIsOpen(false)} style={{display:isOpen == false ?"none":""}} />
-                {slidebar.map(item => 
-                     <Item>
-                        <FontAwesomeIcon icon={item.icon} className="me-2" />
-                        <p className="mb-0">{item.title}</p>
-                     </Item>
+                {slidebar.map((item,key) => 
+                    <Link to={item.link} key={key}>
+                        <Item>
+                            <FontAwesomeIcon icon={item.icon} className="me-2" />
+                            <p className="mb-0">{item.title}</p>
+                        </Item>                
+                    </Link>
                     )}
         </motion.nav>
     )
