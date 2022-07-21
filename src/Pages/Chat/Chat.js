@@ -33,7 +33,9 @@ function SignIn(){
     }
 
     return(
-        <button onClick={signInWithGoogle}>Sign in</button>
+        <div style={{paddingTop:"80px"}}>
+            <button onClick={signInWithGoogle}>寶寶先登入 登入頁面我還沒設計:3 愛寶寶</button>
+        </div>
     )
 }
 
