@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Judy-Only/static/css/main.d4f1a1f2.css",
-    "main.js": "/Judy-Only/static/js/main.47de7282.js",
+    "main.css": "/Judy-Only/static/css/main.bd83874e.css",
+    "main.js": "/Judy-Only/static/js/main.60579501.js",
     "static/media/IMG_8906.webp": "/Judy-Only/static/media/IMG_8906.07807fb5bc0d07650f1b.webp",
     "static/media/IMG_4615.webp": "/Judy-Only/static/media/IMG_4615.a7307071df5459e6e65a.webp",
     "static/media/IMG_9519.webp": "/Judy-Only/static/media/IMG_9519.56cae79503ef105a2556.webp",
@@ -64,11 +64,11 @@
     "static/media/loading.svg": "/Judy-Only/static/media/loading.f8d56fd58925a1aaab4f80f1d8865c03.svg",
     "index.html": "/Judy-Only/index.html",
     "static/media/night-clear.svg": "/Judy-Only/static/media/night-clear.94eb7d671bc6d4dec6aa0b47038954df.svg",
-    "main.d4f1a1f2.css.map": "/Judy-Only/static/css/main.d4f1a1f2.css.map",
-    "main.47de7282.js.map": "/Judy-Only/static/js/main.47de7282.js.map"
+    "main.bd83874e.css.map": "/Judy-Only/static/css/main.bd83874e.css.map",
+    "main.60579501.js.map": "/Judy-Only/static/js/main.60579501.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4f1a1f2.css",
-    "static/js/main.47de7282.js"
+    "static/css/main.bd83874e.css",
+    "static/js/main.60579501.js"
   ]
 }
